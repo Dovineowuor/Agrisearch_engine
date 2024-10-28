@@ -10,15 +10,17 @@ load_dotenv()
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 # Ensure 'punkt' tokenizer data is downloaded
-from utils.punk_downloader import ensure_punkt_downloaded
+from utils.punk_downloader import ensure_punkt_downloaded, punkt_data_path
 ensure_punkt_downloaded()
 
 from utils.process_text_query import analyze_query
 from utils.process_audio_query import analyze_audio_query
 from utils.secure_filename import secure_filename
-
-app = Flask(__name__)
-
+template_dir = os.path.join(os.path.abspath(os.path.dirname(__file__)), '../frontend/templates')
+app = Flask(__name__, template_folder=template_dir)
+import nltk
+ntlk_path=nltk.data.path.append(punkt_data_path)
+ntlk_path
 # Configure Flask app
 app.config.update(
     CELERY_BROKER_URL=os.getenv('CELERY_BROKER_URL', 'amqp://explorer:pa55word@localhost:5672//'),

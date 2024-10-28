@@ -1,17 +1,17 @@
-# process_text_query.py
-
 import re
 import sys
 import os
 from nltk.tokenize import word_tokenize
+
 # Add the project directory to sys.path
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 # Ensure 'punkt' tokenizer data is downloaded
-from punk_downloader import ensure_punkt_downloaded
+from punk_downloader import ensure_punkt_downloaded, punkt_data_path
 ensure_punkt_downloaded()
-from punk_downloader import ensure_punkt_downloaded
-ensure_punkt_downloaded()
+
+import nltk
+nltk.data.path.append(punkt_data_path)
 
 def clean_text(text: str) -> str:
     """Cleans the input text by removing special characters and excess whitespace."""
@@ -30,12 +30,17 @@ def analyze_query(query: str) -> dict:
     cleaned_query = clean_text(query)
     tokens = tokenize_text(cleaned_query)
     token_count = len(tokens)
-    from chromadb_client import client
-    # Query ChromaDB for additional information
-    if client:
-        chroma_result = client.query(text=cleaned_query)  # Assuming ChromaDB client has a `query` method
-    else:
-        chroma_result = "ChromaDB client not initialized."
+    
+    chroma_result = "ChromaDB client not initialized."
+    try:
+        from chromadb_client import client
+        # Query ChromaDB for additional information if client is available
+        if client:
+            chroma_result = client.query(text=cleaned_query)  # Assuming ChromaDB client has a `query` method
+    except ImportError:
+        print("ChromaDB client module not found. Ensure it is installed and configured.")
+    except Exception as e:
+        chroma_result = f"An error occurred with ChromaDB client: {e}"
 
     return {
         'original': query,
