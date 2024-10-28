@@ -1,0 +1,30 @@
+{
+    "cSpell.words": [
+        "agrisearch",
+        "amqp",
+        "CHROMADB",
+        "dotenv",
+        "dtype",
+        "fastapi",
+        "jsonify",
+        "levelname",
+        "ndarray",
+        "openai",
+        "postprocess",
+        "postprocessor",
+        "pproc",
+        "punkt",
+        "Pydantic",
+        "resampy",
+        "SBERT",
+        "sess",
+        "soundfile",
+        "SQLALCHEMY",
+        "STFT",
+        "Tokenizes",
+        "uvicorn",
+        "vggish",
+        "wavfile",
+        "werkzeug"
+    ]
+}
