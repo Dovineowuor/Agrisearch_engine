@@ -29,7 +29,7 @@ google-auth==2.35.0
 google-pasta==0.2.0
 googleapis-common-protos==1.65.0
 grpcio==1.67.0
-h11==0.14.0
+h11==0.16.0
 h5py==3.12.1
 httpcore==1.0.6
 httptools==0.6.4
@@ -40,9 +40,9 @@ idna==3.10
 importlib_metadata==8.4.0
 importlib_resources==6.4.5
 itsdangerous==2.2.0
-Jinja2==3.1.4
+Jinja2==3.1.6
 joblib==1.4.2
-keras==3.6.0
+keras==3.9.0
 kubernetes==31.0.0
 libclang==18.1.1
 llvmlite==0.43.0
@@ -117,10 +117,10 @@ tf-slim==1.1.0
 threadpoolctl==3.5.0
 tiktoken==0.8.0
 tokenizers==0.20.1
-torch==2.2.2
+torch==2.7.0
 torchvision==0.17.2
 tqdm==4.66.5
-transformers==4.45.2
+transformers==4.50.0
 typer==0.12.5
 typing_extensions==4.12.2
 urllib3==2.2.3
@@ -130,7 +130,7 @@ watchfiles==0.24.0
 wcwidth==0.2.13
 websocket-client==1.8.0
 websockets==13.1
-Werkzeug==3.0.4
+Werkzeug==3.0.6
 whisper==1.1.10
 wrapt==1.16.0
 zipp==3.20.2
